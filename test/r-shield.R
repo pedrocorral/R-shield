@@ -11,7 +11,17 @@ Rshield.tests <- function() {
   checkException( mustBeNumeric("13") )
   
   checkEqualsNumeric( 3.14, mustBePositive(3.14) )
-  checkException( 0, mustBePositive(0) )
-  checkException( -130, mustBePositive(-130) )
+  checkException( mustBePositive(0) )
+  checkException( mustBePositive(-130) )
+
+  checkEqualsNumeric( 314, mustBeInteger(314) )
+  checkEqualsNumeric( 0, mustBeInteger(0) )
+  checkEqualsNumeric( -10, mustBeInteger(-10) )
+  checkException( mustBeInteger(3.14) )
+
+  checkEqualsNumeric( 314, mustBeNatural(314) )
+  checkException( mustBeNatural(0) )
+  checkException( mustBeNatural(-10) )
+  checkException( mustBeNatural(3.14) )
 
 }
