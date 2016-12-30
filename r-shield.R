@@ -1,8 +1,20 @@
 
 Rshield.mixMessages <- function(custom.message, ...) if (!is.null(custom.message)) custom.message else paste0(...)
 
+
+mustBeCharacter <- function(str, custom.message = NULL) {
+  if (!is.character(str)) bang(Rshield.mixMessages(custom.message, str, " is not character (as it must)"))
+  else str
+}
+
+mustBeString <- function(str, custom.message = NULL) {
+  if (!is.character(str)) bang(Rshield.mixMessages(custom.message, str, " is not a string (as it must)"))
+  else str
+}
+
+
 mustBeNumeric <- function(n, custom.message = NULL) {
-  if (!is.numeric(n)) bang(Rshield.mixMessages(custom.message, n, " is not numeric (as it must)"))
+  if (!is.numeric(n) || is.nan(n)) bang(Rshield.mixMessages(custom.message, n, " is not numeric (as it must)"))
   else n
 }
 
@@ -24,3 +36,15 @@ mustBeNatural <- function(n, custom.message = NULL) {
   mustBePositive(n, Rshield.mixMessages(custom.message, msg))
 }
 
+
+
+mustBeDataFrame <- function(M, custom.message = NULL) {
+  if (!is.data.frame(M)) bang(Rshield.mixMessages(custom.message, M, " is not a data.frame (as it must)"))
+  else M
+}
+
+mustBeNonEmptyDataFrame <- function(M, custom.message = NULL) {
+  mustBeDataFrame(M, custom.message)
+  if (nrow(M) == 0) bang(Rshield.mixMessages(custom.message, M, " is data.frame, but empty (no rows at all)"))
+  else M
+}
