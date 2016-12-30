@@ -2,7 +2,7 @@
 # https://cran.r-project.org/web/packages/RUnit/RUnit.pdf
 require("RUnit")
 
-Rshield.tests <- function() {
+Rshield.tests.all <- function() {
 
   checkEquals( "this is a string", mustBeString("this is a string") )
   checkException( mustBeString(13) )
@@ -42,4 +42,5 @@ Rshield.tests <- function() {
   checkException( mustBeDataFrame("data.frame()") )
   checkException( mustBeDataFrame(13.14) )
   
+  println( "\nR-Shield::All the tests passed! ;)" )
 }
