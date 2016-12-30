@@ -1,8 +1,9 @@
 
 # https://cran.r-project.org/web/packages/RUnit/RUnit.pdf
-require("RUnit")
 
 Rshield.tests.all <- function() {
+
+  Rshield.require("RUnit")
 
   checkEquals( "this is a string", mustBeString("this is a string") )
   checkException( mustBeString(13) )
