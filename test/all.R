@@ -4,6 +4,9 @@
 Rshield.tests.all <- function() {
 
   Rshield.require("RUnit")
+    
+  Rshield.require("data.table")
+  Rshield.require("hash")
 
   checkEquals( "this is a string", mustBeString("this is a string") )
   checkException( mustBeString(13) )

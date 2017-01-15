@@ -1,0 +1,6 @@
+
+applyOrType
+
+toCharacter <- function(x) {
+  
+}
